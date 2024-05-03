@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package examples;
 
 public class SingleNumber {
     public static void main(String[] args) {

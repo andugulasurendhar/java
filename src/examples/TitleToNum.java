@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package examples;
 
 public class TitleToNum {
     public static void main(String[] args) {

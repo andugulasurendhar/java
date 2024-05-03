@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package examples;
 
 public  class MergeTwoStringsAlternatively {
 

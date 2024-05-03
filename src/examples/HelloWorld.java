@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package examples;
 
 import javax.lang.model.type.ArrayType;
 import java.io.*;
