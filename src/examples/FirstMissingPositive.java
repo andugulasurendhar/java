@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package examples;
 
 public class FirstMissingPositive {
     public static int firstMissingPositive(int[] nums) {

@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package examples;
 import java.lang.*;
 import java.util.*;
 

@@ -1,5 +1,5 @@
-package com.example.helloworld;
-import com.example.helloworld.ListNode;
+package examples;
+import examples.ListNode;
 
 import java.util.List;
 import java.util.*;
