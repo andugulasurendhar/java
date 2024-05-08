@@ -1,88 +1,58 @@
 package Sortings;
 
 
+import java.util.Arrays;
+
 public class MergeSort {
-    void merge(int arr[], int left, int middle, int right)
+    public static void main(String[] args)
     {
-        int low = middle - left + 1;                    //size of the left subarray
-        int high = right - middle;                      //size of the right subarray
+        int[] arr = { 9, 3, 1, 5};
+        System.out.println(Arrays.toString(mergeSort(arr, 0, arr.length - 1)));
+    }
 
-        int L[] = new int[low];                             //create the left and right subarray
-        int R[] = new int[high];
-
-        int i = 0, j = 0;
-
-        for (i = 0; i < low; i++)                               //copy elements into left subarray
-        {
-            L[i] = arr[left + i];
-        }
-        for (j = 0; j < high; j++)                              //copy elements into right subarray
-        {
-            R[j] = arr[middle + 1 + j];
+    public static int[] mergeSort(int[] arr, int lo, int hi){
+        if(lo == hi){
+            int[] ans = new int[1];
+            ans[0] = arr[lo];
+            return ans;
         }
 
+        int mid = lo+(hi-lo)/2;
+        int[] arr1 = mergeSort(arr, lo, mid);
+        int[] arr2 = mergeSort(arr, mid+1, hi);
+        int[] ans = mergeTwoArrays(arr1, arr2);
 
-        int k = left;                                           //get starting index for sort
-        i = 0;                                             //reset loop variables before performing merge
-        j = 0;
+        return ans;
+    }
 
-        while (i < low && j < high)                     //merge the left and right subarrays
-        {
-            if (L[i] <= R[j])
-            {
-                arr[k] = L[i];
+    public static int[] mergeTwoArrays(int[] a, int[] b){
+        int[] ans = new int[a.length+b.length];
+        int i = 0, j=0, k=0;
+
+        while(i<a.length && j< b.length){
+            if(a[i]<b[j]){
+                ans[k] = a[i];
+                k++;
                 i++;
-            }
-            else
-            {
-                arr[k] = R[j];
+            } else{
+                ans[k] = b[j];
+                k++;
                 j++;
             }
-            k++;
         }
 
-        while (i < low)                             //merge the remaining elements from the left subarray
-        {
-            arr[k] = L[i];
+        while(i<a.length){
+            ans[k]=a[i];
             i++;
             k++;
         }
 
-        while (j < high)                           //merge the remaining elements from right subarray
-        {
-            arr[k] = R[j];
+        while(j<b.length){
+            ans[k] = b[j];
             j++;
             k++;
         }
-    }
 
-
-    void mergeSort(int arr[], int left, int right)       //helper function that creates the sub cases for sorting
-    {
-        int middle;
-        if (left < right) {                             //sort only if the left index is lesser than the right index (meaning that sorting is done)
-            middle = (left + right) / 2;
-
-            mergeSort(arr, left, middle);                    //left subarray
-            mergeSort(arr, middle + 1, right);               //right subarray
-
-            merge(arr, left, middle, right);                //merge the two subarrays
-        }
-    }
-
-    void display(int arr[])                 //display the array
-    {
-        for (int i=0; i<arr.length; ++i)
-        {
-            System.out.print(arr[i]+" ");
-        }
-    }
-
-    public static void main(String args[])
-    {
-        int arr[] = { 9, 3, 1, 5};
-        MergeSort ob = new MergeSort();
-        ob.mergeSort(arr, 0, arr.length - 1);
-        ob.display(arr);
+        return ans;
     }
 }
